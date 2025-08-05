@@ -1,6 +1,6 @@
 #!/bin/bash
 
-MFA_DEVICE_ARN=""
+MFA_DEVICE_ARN="arn:aws:iam::429116711298:mfa/samsung-s20-5g"
 SOURCE_PROFILE="default" 
 SESSION_PROFILE="mfa"    
 
@@ -47,7 +47,7 @@ aws configure set aws_secret_access_key "$AWS_SECRET_ACCESS_KEY" --profile $SESS
 aws configure set aws_session_token "$AWS_SESSION_TOKEN" --profile $SESSION_PROFILE
 
 echo "Temporary MFA credentials set in profile '$SESSION_PROFILE'. Use it like:"
-echo "  aws s3 ls --profile $SESSION_PROFILE"
+aws s3 ls --profile "$SESSION_PROFILE"
 
 echo "Exporting temporary credentials into environment..."
 export AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
